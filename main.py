@@ -4,10 +4,9 @@ import random
 
 app = FastAPI()
 
-# CORS setup to allow your Vercel frontend to fetch
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # You can restrict this to your frontend URL
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -18,14 +17,14 @@ async def root():
 
 @app.get("/elasticity")
 async def elasticity():
-    # Mock elasticity simulation — replace with real PyTorch model later
-    price = round(random.uniform(9, 99), 2)
+    # Mock elasticity logic for now
+    price = round(random.uniform(10, 100), 2)
     base_demand = 1000
     elasticity_coefficient = round(random.uniform(-1.5, -0.3), 2)
     demand = round(base_demand * (1 + elasticity_coefficient * ((price - 50) / 50)))
 
     return {
-        "model": "elasticity-v1.0.0",
+        "model": "elasticity-v1.2.3",
         "status": "online",
         "price": price,
         "demand": demand,
