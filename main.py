@@ -15,3 +15,7 @@ async def elasticity():
             "elasticity": -1.4
         }
     }
+
+@app.get("/")
+async def root():
+    return {"message": "Elasticity API root"}
