@@ -1,10 +1,12 @@
 from ops_instrumentation import attach_ops
 from fastapi import FastAPI
+from meta import router as meta_router
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 import numpy as np
 
 app = FastAPI()
+app.include_router(meta_router)
 attach_ops(app)
 
 # Allow CORS from your portfolio
@@ -53,3 +55,7 @@ async def elasticity():
             "elasticityEstimate": elasticity_estimate
         }
     }
+
+@app.get("/health")
+def health():
+    return {"ok": True}
