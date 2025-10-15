@@ -1,9 +1,11 @@
+from ops_instrumentation import attach_ops
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 import numpy as np
 
 app = FastAPI()
+attach_ops(app)
 
 # Allow CORS from your portfolio
 app.add_middleware(

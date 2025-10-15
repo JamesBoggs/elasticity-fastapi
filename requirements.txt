@@ -3,3 +3,5 @@ uvicorn
 numpy
 torch
 python-multipart
+prometheus_client
+pydantic
